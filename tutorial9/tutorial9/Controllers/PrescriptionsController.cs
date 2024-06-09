@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using tutorial9.DTOs;
 using tutorial9.Services;
@@ -15,6 +16,7 @@ public class PrescriptionsController : ControllerBase
         _prescriptionsService = prescriptionsService;
     }
 
+    [Authorize]
     [HttpPost]
     public async Task<IActionResult> AddPrescription([FromBody] PrescriptionRequestDto prescriptionDto)
     {
@@ -34,6 +36,7 @@ public class PrescriptionsController : ControllerBase
         }
     }
     
+    [Authorize]
     [HttpGet("{id}")]
     public async Task<IActionResult> GetPatient(int id)
     {
